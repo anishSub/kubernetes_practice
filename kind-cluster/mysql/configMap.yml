@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config-map          # Name of the ConfigMap
+  namespace: mysql       # (Optional) Namespace where it lives
+data:
+  MYSQL_DATABASE: devops                      # Key-value pairs
+

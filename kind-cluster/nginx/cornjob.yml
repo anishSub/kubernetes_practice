@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: minute-backup
+  namespace: nginx
+spec:
+  schedule: "*/2 * * * *"   # every 2 minutes
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: minute-backup
+          labels:
+            app: minute-backup
+        spec:
+          containers:
+          - name: backup-container
+            image: busybox
+            command:
+            - /bin/sh
+            - -c
+            - echo "Hello from Kubernetes CronJob at $(date)"
+          restartPolicy: OnFailure
+
